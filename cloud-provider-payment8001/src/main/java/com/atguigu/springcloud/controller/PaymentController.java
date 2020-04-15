@@ -1,7 +1,6 @@
 package com.atguigu.springcloud.controller;
 
 import com.atguigu.springcloud.service.PaymentService;
-import com.netflix.discovery.converters.Auto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -11,8 +10,6 @@ import org.springframework.web.bind.annotation.*;
 import springcloud.entities.CommonResult;
 import springcloud.entities.Payment;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.List;
 
 /**
@@ -68,27 +65,5 @@ public class PaymentController
         }
         return this.discoveryClient;
     }
-
-    public static void main(String[] args) {
-        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        Calendar startCalendar = Calendar.getInstance();
-        startCalendar.add(Calendar.DATE, -1);
-        startCalendar.set(Calendar.HOUR_OF_DAY, 0);
-        startCalendar.set(Calendar.MINUTE, 0);
-        startCalendar.set(Calendar.SECOND, 0);
-        df.format(startCalendar.getTime());
-        Calendar endCalendar = Calendar.getInstance();
-        endCalendar.add(Calendar.DATE, -1);
-        endCalendar.set(Calendar.HOUR_OF_DAY, 23);
-        endCalendar.set(Calendar.MINUTE, 59);
-        endCalendar.set(Calendar.SECOND, 59);
-        df.format(endCalendar.getTime());
-        String startTime = df.format(startCalendar.getTime());
-        String endTime = df.format(endCalendar.getTime());
-        System.out.println("startTime:"+startTime);
-        System.out.println("  endTime:"+endTime);
-    }
-
-
 
 }
